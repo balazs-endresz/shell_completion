@@ -1,0 +1,18 @@
+[package]
+name = "fabric_completion"
+version = "0.0.1"
+authors = ["Balazs Endresz"]
+edition = "2018"
+description = "Fabric shell completion scripts in pure Rust"
+repository = "https://github.com/balazs-endresz/shell_completion"
+readme = "../README.md"
+keywords = ["cli", "completion", "autocomplete", "fabric", "fab"]
+license = "MIT OR Apache-2.0"
+
+[dependencies]
+shell_completion = { path = "../shell_completion" }
+cachedir = "0.1.1"
+
+[[bin]]
+name = "_fabric_completion"
+path = "src/main.rs"
