@@ -16,15 +16,27 @@ pub trait CompletionInput : Sized {
     fn previous_word(&self) -> &str {
         self.args()[self.arg_index() - 1]
     }
-    
+
     /// Given a list of subcommands, print any that match the current word
-    fn complete_subcommand<'a, T>(&self, subcommands: T) -> Vec<String>
+    fn complete_subcommand_str<'a, T>(&self, subcommands: T) -> Vec<String>
     where
         T: IntoIterator<Item = &'a str>,
     {
         subcommands
             .into_iter()
             .filter(|&subcommand| subcommand.starts_with(self.current_word()))
+            .map(|s| s.to_string())
+            .collect()
+    }
+
+    /// Given a list of subcommands, print any that match the current word
+    fn complete_subcommand<T>(&self, subcommands: T) -> Vec<String>
+    where
+        T: IntoIterator<Item = String>,
+    {
+        subcommands
+            .into_iter()
+            .filter(|subcommand| subcommand.starts_with(self.current_word()))
             .map(|s| s.to_string())
             .collect()
     }

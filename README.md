@@ -1,6 +1,12 @@
+Fork of https://github.com/JoshMcguigan/shell_completion/ with some additional completion scripts.
+
+Original readme:
+
+----
+
 # shell_completion [![Build Status](https://api.travis-ci.org/JoshMcguigan/shell_completion.svg?branch=master)](https://travis-ci.org/JoshMcguigan/shell_completion) [![crates.io badge](https://img.shields.io/crates/v/shell_completion.svg)](https://crates.io/crates/shell_completion)
 
-Shell completions, which provide auto-complete for CLI applications, are typically written in Bash. This crate provides low level primitives for writing shell completion scripts in Rust. 
+Shell completions, which provide auto-complete for CLI applications, are typically written in Bash. This crate provides low level primitives for writing shell completion scripts in Rust.
 
 ## Usage
 
@@ -27,7 +33,7 @@ See [this blog post](https://www.joshmcguigan.com/blog/shell-completions-pure-ru
 
 ## Users
 
-This crate is not quite ready for production use, but if you are an early adopter, feel free to make a PR adding yourself to the list below. 
+This crate is not quite ready for production use, but if you are an early adopter, feel free to make a PR adding yourself to the list below.
 
 * N/A
 
@@ -42,6 +48,6 @@ at your option.
 
 ### Contribution
 
-All forms of contribution are valued. I've created issues for many high level topics of exploration, and any feedback there will be very helpful in moving this crate in the right direction. Of course, code contributions are appreciated as well. 
+All forms of contribution are valued. I've created issues for many high level topics of exploration, and any feedback there will be very helpful in moving this crate in the right direction. Of course, code contributions are appreciated as well.
 
 Unless you explicitly state otherwise, any contribution intentionally submitted for inclusion in the work by you, as defined in the Apache-2.0 license, shall be dual licensed as above, without any additional terms or conditions.

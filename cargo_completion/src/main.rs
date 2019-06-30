@@ -32,7 +32,7 @@ fn complete_cargo_commands(input: impl CompletionInput) -> Vec<String> {
         .skip(1) // first line is description
         .map(|line| line.split_whitespace().next().unwrap()) // each line is COMMAND DESCRIPTION
         .collect();
-    input.complete_subcommand(cargo_commands) 
+    input.complete_subcommand_str(cargo_commands)
 }
 
 fn complete_run(input: impl CompletionInput) -> Vec<String> {
@@ -58,20 +58,20 @@ fn complete_run(input: impl CompletionInput) -> Vec<String> {
         "--message-format",
         "--color",
     ];
-    
-    if input.previous_word() == "run" 
+
+    if input.previous_word() == "run"
         || !input.previous_word().starts_with("-")
-        || unary_options.contains(&input.previous_word()) 
+        || unary_options.contains(&input.previous_word())
     {
         let all_options = unary_options.into_iter().chain(other_options);
-        input.complete_subcommand(all_options)
+        input.complete_subcommand_str(all_options)
     } else {
         match input.previous_word() {
             "--example" => complete_examples(input),
             "--target-dir" => input.complete_directory(),
             "--manifest-path" => input.complete_file(),
-            "--message-format" => input.complete_subcommand(vec!["human", "json", "short"]),
-            "--color" => input.complete_subcommand(vec!["auto", "always", "never"]),
+            "--message-format" => input.complete_subcommand_str(vec!["human", "json", "short"]),
+            "--color" => input.complete_subcommand_str(vec!["auto", "always", "never"]),
             _ => vec![],
         }
     }
@@ -89,7 +89,7 @@ fn complete_examples(input: impl CompletionInput) -> Vec<String> {
         .skip(2) // first two lines are human readable
         .map(|line| line.trim()) // each line is an example surrounded by whitespace
         .collect();
-    input.complete_subcommand(examples) 
+    input.complete_subcommand_str(examples)
 }
 
 fn complete_test(input: impl CompletionInput) -> Vec<String> {
@@ -129,19 +129,19 @@ fn complete_test(input: impl CompletionInput) -> Vec<String> {
         "--message-format",
         "--color",
     ];
-    
-    if input.previous_word() == "run" 
+
+    if input.previous_word() == "run"
         || !input.previous_word().starts_with("-")
-        || unary_options.contains(&input.previous_word()) 
+        || unary_options.contains(&input.previous_word())
     {
         let all_options = unary_options.into_iter().chain(other_options);
-        input.complete_subcommand(all_options)
+        input.complete_subcommand_str(all_options)
     } else {
         match input.previous_word() {
             "--target-dir" => input.complete_directory(),
             "--manifest-path" => input.complete_file(),
-            "--message-format" => input.complete_subcommand(vec!["human", "json", "short"]),
-            "--color" => input.complete_subcommand(vec!["auto", "always", "never"]),
+            "--message-format" => input.complete_subcommand_str(vec!["human", "json", "short"]),
+            "--color" => input.complete_subcommand_str(vec!["auto", "always", "never"]),
             _ => vec![],
         }
     }
